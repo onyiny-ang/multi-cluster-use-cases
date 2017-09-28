@@ -37,6 +37,6 @@ The following command creates a DNS zone named `federation`. You should replace 
 
 ```
 gcloud dns managed-zones create federation \
-  --description "Kubernetes federation testing" \
+  --description "multi-cluster use case testing" \
   --dns-name federation.localdomain
 ```
