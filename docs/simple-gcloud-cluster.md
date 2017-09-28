@@ -40,3 +40,17 @@ gcloud dns managed-zones create federation \
   --description "multi-cluster use case testing" \
   --dns-name federation.localdomain
 ```
+
+## Create Federation namespace
+
+Verify that the default namespace exists in the federation
+
+```
+kubectl get namespace --context=federation
+```
+
+If it is missing, create it:
+```
+kubectl create namespace default --context=federation
+```
+
