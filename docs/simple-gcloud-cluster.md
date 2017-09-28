@@ -31,4 +31,12 @@ gcloud container clusters list
 export GCP_PROJECT=$(gcloud config list --format='value(core.project)')
 ```
 
+## Create a Google DNS Managed Zone
 
+The following command creates a DNS zone named `federation`. You should replace the dns-name with a valid managed zone backed by a registered DNS domain.
+
+```
+gcloud dns managed-zones create federation \
+  --description "Kubernetes federation testing" \
+  --dns-name federation.localdomain
+```
