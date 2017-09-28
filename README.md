@@ -3,7 +3,7 @@
 The aim of this repo is to demonstrate 4 major use cases of Kubernetes Federation as outlined below
 and in the following [document](https://docs.google.com/presentation/d/1nBrqHu01aGkrXL94dCw9g8s01RsHKbhubuRDrdTXUP0/edit#slide=id.g23af27b1e2_0_212).
 
-The official kubernetes documentation does provide very [thorough documentation](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/) to set up/tear down a default federation which can be applied to any cluster. This most closely matches the first listed use case. This repo will attempt to simplify those instructions and provide a simple app to demonstrate the effectiveness of each use case.
+The official kubernetes documentation does provide very [thorough documentation](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/) to set up/tear down a default federation which can be applied to any type of cluster. These instructions most closely match the first use case examined in this repo. This repo aims to condense those instructions and provide a simple app to demonstrate the effectiveness of each use case.
 
 ## Prerequisites
 
