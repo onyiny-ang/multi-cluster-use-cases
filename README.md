@@ -6,10 +6,10 @@ and in the following [document](https://docs.google.com/presentation/d/1nBrqHu01
 ## Prerequisites
 
 ### Set up kubernetes cluster(s)
-In order to federate kubernetes clusters, one first needs to have kubernetes clusters running. There are [several solutions] (https://kubernetes.io/docs/setup/pick-right-solution/) available to run a kubernetes cluster and these instructions should work similarly for any of the listed use cases. For convenience's sake, this tutorial will be using [Google Cloud Platform](https://cloud.google.com/container-engine/) to spin up and tear down kubernetes clusters.
+In order to federate kubernetes clusters, one first needs to have kubernetes clusters running. There are [several solutions](https://kubernetes.io/docs/setup/pick-right-solution/) available to run a kubernetes cluster and these instructions should work similarly for any of the listed use cases. For convenience's sake, this tutorial will be using [Google Cloud Platform](https://cloud.google.com/container-engine/) to spin up and tear down kubernetes clusters.
 We also need to set up a cluster DNS managed zone to manage external DNS entries based on services created across a federated set of Kubernetes clusters. This tutorial will use GCE for this as well 
 
-Instructions to spin up a simple GCE cluster and create a google DNS managed zone can be found [here](simple-gcloud-cluster.md)
+Instructions to spin up a simple GCE cluster and create a google DNS managed zone can be found [here](docs/simple-gcloud-cluster.md)
 
 ### Download, install and configure kubectl and kubefed
 Exactly how you set up kubectl will depend on the type of cluster you are using. 
