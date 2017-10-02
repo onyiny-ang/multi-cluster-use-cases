@@ -35,7 +35,7 @@ kubectl get clusters -w
 
 As a simple example, we will be deploying nginx.
 
-#### Create the NGINX ReplicaSets
+### Create the NGINX ReplicaSets
 
 The replicasets/nginx.yaml file declares the number of replica sets desired in total across a federation. The number of replica sets will be spread out evenly amongst clusters (by default). Since we want to deploy an application consistently across all clusters, we will want to ensure that the number of replicasets we specify is a multiple of the total number of clusters we wish to deploy across. Thus, if you have 3 clusters and want one replica on each cluster, you would make the replicas: 3, if you would like 3 replica sets on each cluster, you would make the replicas: 9. In the following .yaml file, 3 replica sets will be deployed.
 
@@ -70,7 +70,7 @@ Ensure that each of your replica sets is ready
 kubectl get rs
 ```
 
-### List Pods
+#### List Pods
 
 You can ensure that the number of replicas you desire is running in each pod with the following command
 
@@ -86,7 +86,7 @@ for cluster in ${CLUSTERS}; do
 done
 ```
 
-#### Create NGINX Service
+### Create NGINX Service
 
 This component creates the necessary `nginx` federation DNS entries for each cluster. There will be A type DNS entries created for each zone, region, as well as a top level DNS A type entry that will resolve to all zones for load balancing.
 
@@ -94,41 +94,21 @@ This component creates the necessary `nginx` federation DNS entries for each clu
 kubectl create -f services/nginx-service.yaml
 ```
 
+#### Verify
+
 Wait and verify the service has all the external IP addresses listed:
 
 ```
 kubectl get svc nginx -o wide --watch
 ```
 
-#### Create the NGINX Deployment
-
-We'll need to create the NGINX game deployment to access the application on port 80.
-
-```
-kubectl create -f deployments/nginx-deployment-rs.yaml
-```
-
-Scale the nginx deployment
-
-```
-kubectl scale deploy/nginx --replicas=3
-```
-
-Wait until the nginx deployment shows 3 pods available
-
-```
-kubectl get deploy nginx -o wide --watch
-```
+## NGINX
 
 Once the `nginx` service has an IP address for each replica, open up your browser and try to access it via its
 DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/). Make sure to replace `federation.com` with your DNS name.
 
 You can also see all the DNS entries that were created in your [Google DNS Managed Zone](https://console.cloud.google.com/networking/dns/zones).
 
-## NGINX
 
-Go ahead and open your browser to nginx
-e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/) (replace `federation.com` with your DNS name).
-
-
+Back to [other use-cases](../README.md#initialize-the-federated-control-plane)
 
