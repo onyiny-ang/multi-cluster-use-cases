@@ -51,7 +51,8 @@ using i.e. `v1.6.4` in this case.
 ```
 kubefed init federation \
     --host-cluster-context=gke_${GCP_PROJECT}_us-west1-b_gce-us-west1 \
-    --dns-provider='google-clouddns' --dns-zone-name=federation.com.
+    --dns-provider='google-clouddns' \
+    --dns-zone-name=federation.com.
 ```
 
 Once the command completes, you will have a federated API server and controller-manager running as well as a `federation` context for `kubectl` commands.

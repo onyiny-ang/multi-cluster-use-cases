@@ -7,7 +7,7 @@ You should first configure gcloud to use client certificates:
 
 ```gcloud config set container/use_client_certificate True```
 
-Next you can use the `gcloud container clusters create` command to create a Kubernetes cluster in us-west1-b:
+Next you can use the `gcloud container clusters create` command to create the Kubernetes clusters you want to use. The following is an example for setting up a cluster in us-west1-b. You will need to set up at least 2 clusters to demonstrate federation.
 
 #### gce-us-west1
 
