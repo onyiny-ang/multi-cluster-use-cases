@@ -35,9 +35,9 @@ kubectl get clusters -w
 
 As a simple example, we will be deploying nginx.
 
-#### Create the Nginx ReplicaSets
+#### Create the NGINX ReplicaSets
 
-The replicasets/nginx.yaml file declares the number of replicas we desire. This can be altered as desired. With the file as is, 3 replica sets will be deployed.
+The replicasets/nginx.yaml file declares the number of replica sets desired in total across a federation. The number of replica sets will be spread out evenly amongst clusters (by default). Since we want to deploy an application consistently across all clusters, we will want to ensure that the number of replicasets we specify is a multiple of the total number of clusters we wish to deploy across. Thus, if you have 3 clusters and want one replica on each cluster, you would make the replicas: 3, if you would like 3 replica sets on each cluster, you would make the replicas: 9. In the following .yaml file, 3 replica sets will be deployed.
 
 ```
 apiVersion: extensions/v1beta1
@@ -62,11 +62,33 @@ spec:
               cpu: 100m
               memory: 100Mi
 ```
+#### Verify your replica sets
 
-####Nginx Service
+Ensure that each of your replica sets is ready
+ 
+```
+kubectl get rs
+```
 
-This component creates the necessary `nginx` federation DNS entries for each cluster. There will be A DNS entries created for each zone, region,
-as well as a top level DNS A entry that will resolve to all zones for load balancing.
+### List Pods
+
+You can ensure that the number of replicas you desire is running in each pod with the following command
+
+```
+CLUSTERS="name-1 name-2 name-3"
+```
+
+```
+for cluster in ${CLUSTERS}; do
+  echo ""
+  echo "${cluster}"
+  kubectl --context=${cluster} get pods
+done
+```
+
+#### Create NGINX Service
+
+This component creates the necessary `nginx` federation DNS entries for each cluster. There will be A type DNS entries created for each zone, region, as well as a top level DNS A type entry that will resolve to all zones for load balancing.
 
 ```
 kubectl create -f services/nginx-service.yaml
@@ -78,9 +100,9 @@ Wait and verify the service has all the external IP addresses listed:
 kubectl get svc nginx -o wide --watch
 ```
 
-#### Create the Nginx Deployment
+#### Create the NGINX Deployment
 
-We'll need to create the Nginx game deployment to access the application on port 80.
+We'll need to create the NGINX game deployment to access the application on port 80.
 
 ```
 kubectl create -f deployments/nginx-deployment-rs.yaml
@@ -103,13 +125,10 @@ DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.defa
 
 You can also see all the DNS entries that were created in your [Google DNS Managed Zone](https://console.cloud.google.com/networking/dns/zones).
 
-## Nginx
+## NGINX
 
-Go ahead and play a few rounds of Nginx and invite your friends and colleagues by giving them your FQDN to your Nginx application
+Go ahead and open your browser to nginx
 e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/) (replace `federation.com` with your DNS name).
 
-The DNS will load balance and resolve to any one of the zones in your federated kubernetes cluster. This is represented by the `Zone:`
-field at the top. When you save your score, it will automatically save the zone you were playing in and display it in the High Score list.
 
-See who can get the highest score!
 
