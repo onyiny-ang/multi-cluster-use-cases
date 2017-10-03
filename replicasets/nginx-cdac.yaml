@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: nginx-us
+  annotations:
+    federation.kubernetes.io/replica-set-preferences: |
+        {
+            "rebalance": true,
+            "clusters": {
+                "us-east1-b": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                },
+                "us-central1-b": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                }
+                "us-west1-b": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                }
+            }
+        }
+spec:
+  replicas: 9
+  template:
+    metadata:
+      labels:
+        region: nginx-us
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi

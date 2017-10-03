@@ -81,9 +81,9 @@ cd multi-cluster-use-cases
 Follow the instructions in the below links to test out different multi-cluster use-cases.
 
 - [Statically Distribute an Application Consistently across all Clusters using the FCP](docs/consistent-deployment-across-clusters.md) + [Summary](docs/cdac-summary.md)
-- [Statically Distribute an Application Consistently across some Clusters using the FCP](docs/consistent-deployment-across-some-clusters.md) + [Summary](docs/cdsc-summary.md)
-- [Statically Distribute an Application Varyingly across some Clusters using the FCP](docs/varied-deployment-across-some-clusters.md) + [Summary](docs/vdsc-summary.md)
-- [Statically Distribute an Application Varyingly across all clusters using the FCP](docs/varied-deployment-across-clusters.md) + [Summary](docs/vdac-summar.md)
+- [Statically Distribute an Application Consistently across specific Clusters using the FCP](docs/consistent-deployment-specific-clusters.md) + [Summary](docs/cdsc-summary.md)
+- [Statically Distribute an Application Varyingly across specific Clusters using the FCP](docs/varied-deployment-specific-clusters.md) + [Summary](docs/vdsc-summary.md)
+- [Statically Distribute an Application Varyingly across all clusters using the FCP](docs/varied-deployment-across-clusters.md) + [Summary](docs/vdac-summary.md)
 
 
 
