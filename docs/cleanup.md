@@ -1,27 +1,17 @@
 ## Cleanup 
 
+#### Delete NGINX Service
+
+```
+kubectl delete services nginx
+```
+
 #### Unjoin Individual Clusters
 
-If you joined each cluster individually by providing a unique name to each, then unjoin each one. Examples are given for GCE, AWS and Azure clouds service providers.
-
-##### gce-us-west1
+If you joined each cluster individually by providing a unique name to each, then unjoin each one. 
 
 ```bash
-kubefed unjoin gce-us-west1 \
-    --host-cluster-context=${HOST_CLUSTER}
-```
-
-##### az-us-central1
-
-```bash
-kubefed unjoin az-us-central1 \
-    --host-cluster-context=${HOST_CLUSTER}
-```
-
-##### aws-us-east1
-
-```bash
-kubefed unjoin aws-us-east1 \
+kubefed unjoin cluster-name \
     --host-cluster-context=${HOST_CLUSTER}
 ```
 

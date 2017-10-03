@@ -37,22 +37,41 @@ As a simple example, we will be deploying nginx.
 
 ### Create the NGINX ReplicaSets
 
-The replicasets/nginx.yaml file declares the number of replica sets desired in total across a federation. The number of replica sets will be spread out evenly amongst clusters (by default). Since we want to deploy an application consistently across all clusters, we will want to ensure that the number of replicasets we specify is a multiple of the total number of clusters we wish to deploy across. Thus, if you have 3 clusters and want one replica on each cluster, you would make the replicas: 3, if you would like 3 replica sets on each cluster, you would make the replicas: 9. In the following .yaml file, 3 replica sets will be deployed.
+The replicasets/nginx.yaml file declares the number of replica sets desired in total across a federation. Since we want to ensure that we are deploying an application consistently across all clusters, we will want to specify the number of replicasets in each cluster and also ensure that the total number of replica sets is reflected in the `spec:replicas`. If you have 3 clusters and want one replica on each cluster, you would make the `spec:replicas: 3`, if you would like 3 replica sets on each cluster, you would make the `spec:replicas: 9`. In the following .yaml file, 3 replica sets will be deployed on each cluster.
 
 ```
 apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
-  labels:
-    name: nginx
-  name: nginx
+  name: nginx-us
+  annotations:
+    federation.kubernetes.io/replica-set-preferences: |
+        {
+            "rebalance": true,
+            "clusters": {
+                "cluster-1": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                },
+                "cluster-2": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                }
+                "cluster-3": {
+                    "minReplicas": 3,
+                    "maxReplicas": 3,
+                    "weight": 1
+                }
+            }
+        }
 spec:
-  replicas: 3
+  replicas: 9
   template:
     metadata:
       labels:
-        app: nginx
-        name: nginx
+        region: nginx-us
     spec:
       containers:
         - name: nginx
@@ -61,11 +80,12 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
-```
-When you have altered the replicasets/nginx.yaml file appropriately, run
 
 ```
-kubectl create -f replicasets/nginx.yaml
+When you have altered the replicasets/nginx-cdac.yaml file appropriately, run
+
+```
+kubectl create -f replicasets/nginx-cdac.yaml
 ```
 
 #### Verify your replica sets
@@ -78,11 +98,12 @@ kubectl get rs -o wide --watch
 
 #### List Pods
 
-You can ensure that the number of replicas you desire is running in each pod with the following command
+You can ensure that the number of replicas you desire is running in each pod with the following command:
 
 ```
-CLUSTERS="name-1 name-2 name-3"
+CLUSTERS="cluster-1 cluster-2 cluster-3"
 ```
+** Note, the cluster names can be found by running `kubectl config get-contexts`
 
 ```
 for cluster in ${CLUSTERS}; do
