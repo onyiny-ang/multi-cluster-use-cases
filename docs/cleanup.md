@@ -47,4 +47,4 @@ kubectl config delete-context federation
 Delete your remaining clusters, DNS managed zone and contexts as needed.
 
 
-[Back to multi-cluster use cases](../README.md#multi-cluster-use-cases)
+[Back to multi-cluster use cases](../README.md#multi-cluster-use-cases-1)

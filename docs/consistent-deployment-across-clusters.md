@@ -126,5 +126,5 @@ DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.defa
 
 Clean up you federation by following [these steps](./cleanup.md)
 
-Back to [other use-cases](../README.md#multi-cluster-use-cases)
+Back to [other use-cases](../README.md#multi-cluster-use-cases-1)
 
