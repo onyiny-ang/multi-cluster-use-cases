@@ -65,7 +65,7 @@ spec:
 When you have altered the replicasets/nginx.yaml file appropriately, run
 
 ```
-kubectl create -f rs/nginx.yaml
+kubectl create -f replicasets/nginx.yaml
 ```
 
 #### Verify your replica sets
@@ -73,7 +73,7 @@ kubectl create -f rs/nginx.yaml
 Ensure that each of your replica sets is ready
  
 ```
-kubectl get rs
+kubectl get rs -o wide --watch
 ```
 
 #### List Pods
@@ -107,14 +107,24 @@ Wait and verify the service has all the external IP addresses listed:
 ```
 kubectl get svc nginx -o wide --watch
 ```
+#### List Services
+
+```
+for cluster in ${CLUSTERS}; do
+  echo ""
+  echo "${cluster}"
+  kubectl --context=${cluster} describe services nginx
+done
+```
 
 ## NGINX
 
 Once the `nginx` service has an IP address for each replica, open up your browser and try to access it via its
 DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/). Make sure to replace `federation.com` with your DNS name.
 
-You can also see all the DNS entries that were created in your [Google DNS Managed Zone](https://console.cloud.google.com/networking/dns/zones).
+## Cleanup
 
+Clean up you federation by following [these steps](./cleanup.md)
 
 Back to [other use-cases](../README.md#multi-cluster-use-cases)
 

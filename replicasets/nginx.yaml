@@ -5,7 +5,6 @@ metadata:
     name: nginx 
   name: nginx
 spec:
-  replicas: 3
   template:
     metadata:
       labels:
