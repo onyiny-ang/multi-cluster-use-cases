@@ -36,3 +36,5 @@ Another complication that was not examined here is persistent data storage. At t
 
 Static distribution of an application can be deployed consistently across multiple cloud providers which helps customers to avoid vendor lock-in.
 
+[Back to multi-cluster use cases](../README.md#multi-cluster-use-cases)
+
