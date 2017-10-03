@@ -76,7 +76,6 @@ Clone this repository and `cd` into the directory
 
 ```
 cd multi-cluster-use-cases
-
 ```
 
 Follow the instructions in the below links to test out different multi-cluster use-cases.

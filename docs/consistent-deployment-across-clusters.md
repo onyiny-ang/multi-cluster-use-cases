@@ -62,6 +62,12 @@ spec:
               cpu: 100m
               memory: 100Mi
 ```
+When you have altered the replicasets/nginx.yaml file appropriately, run
+
+```
+kubectl create -f rs/nginx.yaml
+```
+
 #### Verify your replica sets
 
 Ensure that each of your replica sets is ready
