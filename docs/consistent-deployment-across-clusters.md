@@ -110,5 +110,5 @@ DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.defa
 You can also see all the DNS entries that were created in your [Google DNS Managed Zone](https://console.cloud.google.com/networking/dns/zones).
 
 
-Back to [other use-cases](../README.md#initialize-the-federated-control-plane)
+Back to [other use-cases](../README.md#multi-cluster-use-cases)
 

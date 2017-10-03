@@ -1,7 +1,7 @@
 # Multi-Cluster Use Cases
 
 The aim of this repo is to demonstrate 4 major use cases of Kubernetes Federation as outlined below
-and in the following [document](https://docs.google.com/presentation/d/1nBrqHu01aGkrXL94dCw9g8s01RsHKbhubuRDrdTXUP0/edit#slide=id.g23af27b1e2_0_212).
+and in the following documents [1](https://docs.google.com/presentation/d/1nBrqHu01aGkrXL94dCw9g8s01RsHKbhubuRDrdTXUP0/edit#slide=id.g23af27b1e2_0_212), [2](https://docs.google.com/document/d/1fA7fe4IddXz3rjdBLTBai-87hB_6BGrQY0s-1gqf0-A/edit).
 
 The official kubernetes documentation does provide very [thorough documentation](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/) to set up/tear down a default federation which can be applied to any type of cluster. These instructions most closely match the first use case examined in this repo. This repo aims to condense those instructions and provide a simple app to demonstrate the effectiveness of each use case.
 
@@ -56,6 +56,28 @@ kubefed init federation \
 ```
 
 Once the command completes, you will have a federated API server and controller-manager running as well as a `federation` context for `kubectl` commands.
+
+## Create Federation namespace
+
+Verify that the default namespace exists in the federation
+
+```
+kubectl get namespace --context=federation
+```
+
+If it is missing, create it:
+```
+kubectl create namespace default --context=federation
+```
+
+## Multi Cluster Use Cases
+
+Clone this repository and `cd` into the directory
+
+```
+cd multi-cluster-use-cases
+
+```
 
 Follow the instructions in the below links to test out different multi-cluster use-cases.
 
