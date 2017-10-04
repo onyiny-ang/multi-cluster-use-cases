@@ -17,12 +17,12 @@ metadata:
         {
             "rebalance": true,
             "clusters": {
-                "us-east1-b": {
+                "cluster-1": {
                     "minReplicas": 2,
                     "maxReplicas": 2
                     "weight": 1
                 },
-                "us-central1-b": {
+                "cluster-2": {
                     "minReplicas": 2,
                     "maxReplicas": 2,
                     "weight": 1
