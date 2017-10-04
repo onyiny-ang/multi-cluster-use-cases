@@ -7,16 +7,11 @@ metadata:
         {
             "rebalance": true,
             "clusters": {
-                "gce-us-east1": {
-                    "minReplicas": 3,
-                    "maxReplicas": 3,
-                    "weight": 1
-                },
                 "gce-us-central1": {
                     "minReplicas": 3,
                     "maxReplicas": 3,
                     "weight": 1
-                }
+                },
                 "gce-us-west1": {
                     "minReplicas": 3,
                     "maxReplicas": 3,
@@ -25,7 +20,7 @@ metadata:
             }
         }
 spec:
-  replicas: 9
+  replicas: 6
   template:
     metadata:
       labels:
@@ -38,3 +33,5 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
+
+

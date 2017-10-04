@@ -57,7 +57,7 @@ kubefed init federation \
 
 Once the command completes, you will have a federated API server and controller-manager running as well as a `federation` context for `kubectl` commands.
 
-## Create Federation namespace
+### Create Default namespace
 
 Verify that the default namespace exists in the federation
 
@@ -68,6 +68,32 @@ kubectl get namespace --context=federation
 If it is missing, create it:
 ```
 kubectl create namespace default --context=federation
+```
+
+## Join clusters to your federation
+
+Before proceeding, make sure we're using the newly created `federation` context to run our `kubefed join` commands.
+
+```
+kubectl config use-context federation
+```
+
+The `kubefed join` command joins each of the Kubernetes clusters from each zone. It is necessary to specify the host-cluster-context of the federation as well as the cluster-context of the kubernetes cluster that is being joined to the federation.
+
+#### Use federation context
+In this example, we're joining a GCE cluster in the east1 zone to a federation that has a GCE host cluster from west 1 zone. The cluster names and host-cluster names in the example below should be altered to match the names you have set for your clusters:
+
+```
+kubefed join cluster-1 \
+    --host-cluster-context=gke_${GCP_PROJECT}_us-west1-b_gce-us-west1 \
+    --cluster-context=gke_${GCP_PROJECT}_us-east1-b_gce-us-east1
+```
+Continue joining each of the clusters you wish to federate in this way.
+
+#### Verify
+
+```
+kubectl get clusters -w
 ```
 
 ## Multi Cluster Use Cases
