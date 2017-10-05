@@ -124,6 +124,9 @@ For example, we can redistribute the original 6 replicas from cluster-1 and clus
 kubectl annotate rs/nginx federation.kubernetes.io/replica-set-preferences='{"rebalance": true, "clusters": {"cluster-1": {"minReplicas": 3, "maxReplicas": 3, "weight": 0},"cluster-2": {"minReplicas": 3, "maxReplicas": 3, "weight": 0}}}'
 ```
 
+### Extra Mongo App
+
+The same replica set and service yaml files are available for mongo as well. If you are interested, you can try running the same commands as above (replace all instances of nginx with mongo) to see a mongo replica spin up on each of your clusters. Feel free to try the same process with your own app.
 
 
 ## Cleanup

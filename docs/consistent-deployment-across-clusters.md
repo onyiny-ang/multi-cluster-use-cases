@@ -116,6 +116,10 @@ done
 Once the `nginx` service has an IP address for each replica, open up your browser and try to access it via its
 DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/). Make sure to replace `federation.com` with your DNS name.
 
+### Extra Mongo App
+
+The same replica set and service yaml files are available for mongo as well. If you are interested, you can try running the same commands as above (replace all instances of nginx with mongo) to see a mongo replica spin up on each of your clusters. Feel free to try the same process with your own app.
+
 ## Cleanup
 
 Clean up you federation by following [these steps](./cleanup.md)
