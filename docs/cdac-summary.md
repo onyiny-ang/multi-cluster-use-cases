@@ -8,7 +8,7 @@ Upon setting up the federation control plane with one cluster designated as the 
 For example:
 
 ```
-piVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
   name: nginx-us
