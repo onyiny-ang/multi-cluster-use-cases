@@ -18,7 +18,7 @@ Open the file replicasets/nginx-cdsc.yaml with your text editor of choice.
 apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
-  name: nginx-us
+  name: nginx
   annotations:
     federation.kubernetes.io/replica-set-preferences: |
         {
@@ -41,7 +41,7 @@ spec:
   template:
     metadata:
       labels:
-        region: nginx-us
+        app: nginx
     spec:
       containers:
         - name: nginx
@@ -115,9 +115,20 @@ done
 Once the `nginx` service has an IP address for each replica, open up your browser and try to access it via its
 DNS e.g. [http://nginx.default.federation.svc.federation.com/](http://nginx.default.federation.svc.federation.com/). Make sure to replace `federation.com` with your DNS name.
 
+## Add/Remove Specific Clusters
+
+This can be accomplished by simply changing the minReplicas and maxReplicas in each cluster that you want to include.
+For example, we can redistribute the original 6 replicas from cluster-1 and cluster-3 to cluster-1 and cluster-2 with the following command
+
+```
+kubectl annotate rs/nginx federation.kubernetes.io/replica-set-preferences='{"rebalance": true, "clusters": {"cluster-1": {"minReplicas": 3, "maxReplicas": 3, "weight": 0},"cluster-2": {"minReplicas": 3, "maxReplicas": 3, "weight": 0}}}'
+```
+
+
+
 ## Cleanup
 
-Clean up you federation by following [these steps](./cleanup.md)
+Clean up your federation by following [these steps](./cleanup.md)
 
 
 [Back to multi-cluster use cases](../README.md#multi-cluster-use-cases-1)

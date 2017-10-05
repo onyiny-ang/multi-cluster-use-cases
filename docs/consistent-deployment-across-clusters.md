@@ -16,7 +16,7 @@ The replicasets/nginx.yaml file declares the number of replica sets desired in t
 apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
-  name: nginx-us
+  name: nginx
   annotations:
     federation.kubernetes.io/replica-set-preferences: |
         {
@@ -44,7 +44,7 @@ spec:
   template:
     metadata:
       labels:
-        region: nginx-us
+        app: nginx
     spec:
       containers:
         - name: nginx
