@@ -2,7 +2,7 @@
 
 This set up ensures that an application (a namespace and its contents) is deployed on specific clusters under the FCP "varyingly" in that the namespace and all its API objects and the amount of replicas are not necessarily equally distributed across each of the specified clusters as illustrated below:
 
-![Varied Deployment Specific Clusters](images/vdsc.png)
+![Varied Deployment Specific Clusters](../images/vdsc.png)
 
 
 Assuming you have your kubernetes cluster running and federation control plane set up with each of your clusters joined to it already:

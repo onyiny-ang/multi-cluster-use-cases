@@ -2,7 +2,7 @@
 
 The following set up ensures that an application (a namespace and its contents) is deployed on every cluster under the FCP "consistently" in that the namespace and all its API objects and the amount of replicas are the same across every cluster as illustrated below:
 
-![Consistent Deployment Across Clusters](images/cdac.png)
+![Consistent Deployment Across Clusters](../images/cdac.png)
 
 Assuming you have your kubernetes cluster running and federation control plane set up with each of your clusters joined to it already:
 
