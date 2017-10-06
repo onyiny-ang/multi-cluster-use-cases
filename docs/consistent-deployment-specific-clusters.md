@@ -1,6 +1,9 @@
 # Statically Distribute an Application Consistently across Specific Clusters using the FCP
 
-This set up ensures that an application (a namespace and its contents) is deployed on specific clusters under the FCP "consistently" in that the namespace and all its API objects and the amount of replicas are the same across each of the specified clusters.
+This set up ensures that an application (a namespace and its contents) is deployed on specific clusters under the FCP "consistently" in that the namespace and all its API objects and the amount of replicas are the same across each of the specified clusters as illustrated below:
+
+![Consistent Deployment Specific Clusters](images/cdsc.png)
+
 
 Assuming you have your kubernetes cluster running and federation control plane set up with each of your clusters joined to it already:
 

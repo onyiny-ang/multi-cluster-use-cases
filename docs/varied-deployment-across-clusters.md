@@ -1,6 +1,8 @@
 # Statically Distribute an Application Varyingly across Clusters using the FCP
 
-The following set up ensures that an application (a namespace and its contents) is deployed on every cluster under the FCP varyingly in that the namespace and all its API objects and the amount of replicas can be different in each cluster.
+The following set up ensures that an application (a namespace and its contents) is deployed on every cluster under the FCP varyingly in that the namespace and all its API objects and the amount of replicas can be different in each cluster as illustrated below:
+
+![Varied Deployment Across Clusters](images/vdac.png)
 
 Assuming you have your kubernetes cluster running and federation control plane set up with each of your clusters joined to it already:
 
