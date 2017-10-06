@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: nginx
+  annotations:
+    federation.kubernetes.io/replica-set-preferences: |
+        {
+            "rebalance": true,
+            "clusters": {
+                "gce-us-central1": {
+                    "minReplicas": 4,
+                    "maxReplicas": 4,
+                    "weight": 1
+                },
+                "gce-us-west1": {
+                    "minReplicas": 2,
+                    "maxReplicas": 2,
+                    "weight": 1
+                }
+            }
+        }
+spec:
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+
+

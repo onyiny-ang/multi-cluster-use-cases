@@ -10,7 +10,7 @@ As a simple example, we will be deploying nginx.
 
 ### Create the NGINX ReplicaSets
 
-The replicasets/nginx.yaml file declares the number of replica sets desired in total across a federation. Since we want to ensure that we are deploying an application consistently across all clusters, we will want to specify the number of replicasets in each cluster and also ensure that the total number of replica sets is reflected in the `spec:replicas`. If you have 3 clusters and want one replica on each cluster, you would make the `spec:replicas: 3`, if you would like 3 replica sets on each cluster, you would make the `spec:replicas: 9`. In the following .yaml file, 3 replica sets will be deployed on each cluster.
+The replicasets/nginx.yaml file declares the number of replica sets desired in total across a multicluster. Since we want to ensure that we are deploying an application consistently across all clusters, we will want to specify the number of replicasets in each cluster and also ensure that the total number of replica sets is reflected in the `spec:replicas`. If you have 3 clusters and want one replica on each cluster, you would make the `spec:replicas: 3`, if you would like 3 replica sets on each cluster, you would make the `spec:replicas: 9`. In the following .yaml file, 3 replica sets will be deployed on each cluster.
 
 ```
 apiVersion: extensions/v1beta1
@@ -55,7 +55,7 @@ spec:
               memory: 100Mi
 
 ```
-When you have altered the replicasets/nginx-cdac.yaml file appropriately, run
+Feel free to change the total number of replicas and min-max replicas for each cluster to maintain a balanced spread across clusters. When you have altered the replicasets/nginx-cdac.yaml file appropriately, run
 
 ```
 kubectl create -f replicasets/nginx-cdac.yaml
@@ -88,7 +88,7 @@ done
 
 ### Create NGINX Service
 
-This component creates the necessary `nginx` federation DNS entries for each cluster. There will be A type DNS entries created for each zone, region, as well as a top level DNS A type entry that will resolve to all zones for load balancing.
+This component creates the necessary `nginx` federation DNS entries in your DNS managed zone for each cluster. There will be A type DNS entries created for each zone, region, as well as a top level DNS A type entry that will resolve to all zones for load balancing.
 
 ```
 kubectl create -f services/nginx-service.yaml
