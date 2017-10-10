@@ -16,4 +16,6 @@
 
 - The ease of declarative application distrubtion may be slightly complicated by adding persistent storage to an app running across a multicluster as DNS connections between clusters need to be set up manually at this time. This issue is out of the scope of this investigation.
 
+Back to [other use-cases](../README.md#multi-cluster-use-cases-1)
+
 
