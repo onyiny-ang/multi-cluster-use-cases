@@ -8,6 +8,10 @@
 
 - Once Replicas are set up on a multicluster, they can be changed through the `kubectl` command, `annotate` **It should be noted that this may change in future versions of kubectl/kubernetes**
 
+- Annotations (or a similar feature) should be improved--a mistyped bracket or letter in the command will not fail or give any warning that an annotation was unsuccessful. Replicas will not be spread as desired but there will be no error or failed message to alert you to this.
+
+- Both clusters attached to the FCP initially at the time of replica deployment, and those that are attached after the FCP is established with replicas/services can have replicas scheduled to them and away from them. 
+
 - Total number of replicas can be changed with the `kubectl scale` command
 
 - Federated control plane creates the multicluster --test whether clusters can be added after the fact
