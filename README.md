@@ -111,5 +111,5 @@ Follow the instructions in the below links to test out different multi-cluster u
 - [Statically Distribute an Application Varyingly across specific Clusters using the FCP](docs/varied-deployment-specific-clusters.md) + [Summary](docs/vdsc-summary.md)
 - [Statically Distribute an Application Varyingly across all clusters using the FCP](docs/varied-deployment-across-clusters.md) + [Summary](docs/vdac-summary.md)
 
-
+**[Main Take Aways](docs/overall-summary.md)**
 
