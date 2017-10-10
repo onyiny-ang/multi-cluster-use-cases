@@ -14,8 +14,6 @@
 
 - Total number of replicas can be changed with the `kubectl scale` command
 
-- Federated control plane creates the multicluster --test whether clusters can be added after the fact
-
-- The ease of this process may be slightly complicated by adding persistent storage to an app running across a multicluster as DNS connections between clusters need to be set up manually at this time. This issue is out of the scope of this investigation.
+- The ease of declarative application distrubtion may be slightly complicated by adding persistent storage to an app running across a multicluster as DNS connections between clusters need to be set up manually at this time. This issue is out of the scope of this investigation.
 
 
