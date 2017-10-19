@@ -35,7 +35,7 @@ metadata:
 ```
 **Disclaimer: Annotations are being phased out and may no longer be supported in this way in the future**
 
-Another complication that was not examined here is persistent data storage. At this point there is no support for federated persistent data. The host cluster can be made with its own persistent volume that can be propagated out to each cluster but there is no automatic communication between these clusters or persistence across clusters. That is not to say that communication between clusters is impossible, just that it involves a few extra steps (example with mongodb on pacman: https://github.com/font/k8s-example-apps/blob/master/pacman-nodejs-app/docs/pacman-nodejs-app-federated-multicloud.md#create-mongodb-persistent-volume-claims).
+Another complication that was not examined here is persistent data storage. At this point kubefed init does not support attaching an existing PersistentVolumeClaim to the FCP. PVCs can be deployed to each of the clusters attached to the FCP but this must be done manually and there is no automatic communication between the PVCs or persistence across clusters. That is not to say that communication between clusters is impossible, just that it involves a few extra steps (example with mongodb on pacman: https://github.com/font/k8s-example-apps/blob/master/pacman-nodejs-app/docs/pacman-nodejs-app-federated-multicloud.md#create-mongodb-persistent-volume-claims).
 
 [Back to multi-cluster use cases](../README.md#multi-cluster-use-cases-1)
 

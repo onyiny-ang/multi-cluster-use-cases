@@ -1,13 +1,14 @@
 # Multi-Cluster Use Cases
 
 The aim of this repo is to demonstrate 4 major use cases of Kubernetes Federation as outlined below
-and in the following documents [1](https://docs.google.com/presentation/d/1nBrqHu01aGkrXL94dCw9g8s01RsHKbhubuRDrdTXUP0/edit#slide=id.g23af27b1e2_0_212), [2](https://docs.google.com/document/d/1fA7fe4IddXz3rjdBLTBai-87hB_6BGrQY0s-1gqf0-A/edit).
+and in the following document [2](https://docs.google.com/document/d/1fA7fe4IddXz3rjdBLTBai-87hB_6BGrQY0s-1gqf0-A/edit).
 
 The official kubernetes documentation does provide very [thorough instructions](https://kubernetes.io/docs/tasks/federation/set-up-cluster-federation-kubefed/) to set up/tear down a default federation which can be applied to any type of cluster. These instructions most closely match the first use case examined in this repo. This repo aims to condense those instructions and uses a simple app (nginx) to demonstrate the effectiveness of each use case.
 
 ## Prerequisites
 
 ### Set up kubernetes cluster(s)
+
 In order to federate kubernetes clusters, one first needs to have kubernetes clusters running. There are [several solutions](https://kubernetes.io/docs/setup/pick-right-solution/) available to run a kubernetes cluster and these instructions should work similarly for any of the listed use cases. For convenience's sake, this tutorial will be using [Google Cloud Platform](https://cloud.google.com/container-engine/) to spin up and tear down kubernetes clusters.
 We also need to set up a cluster DNS managed zone to manage external DNS entries based on services created across a federated set of Kubernetes clusters. This tutorial will use GCE for this as well 
 
@@ -18,6 +19,7 @@ Exactly how you set up kubectl will depend on the type of cluster you are using.
 
 #### To Download/Install:
 Replace the version string with whatever version you want in the `curl` command below.
+This investigation was conducted using Kubernetes version 1.6.4. 
 
 ```
 curl -O https://storage.googleapis.com/kubernetes-release/release/v1.6.4/kubernetes-client-linux-amd64.tar.gz

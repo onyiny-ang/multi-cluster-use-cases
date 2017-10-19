@@ -6,6 +6,8 @@
 
 - Replicas can be easily deployed, consistently and varyingly across cluster or on specific clusters by altering min/max replica sets for each cluster
 
+- There are 2 ways to indicate that a cluster should not be deployed to. It can be explicitly stated with min/max replicas set to 0 or the cluster can be left out of the annotation. Both methods seem to have the same effect.
+
 - Once Replicas are set up on a multicluster, they can be changed through the `kubectl` command, `annotate` **It should be noted that this may change in future versions of kubectl/kubernetes**
 
 - Annotations (or a similar feature) should be improved--a mistyped bracket or letter in the command will not fail or give any warning that an annotation was unsuccessful. Replicas will not be spread as desired but there will be no error or failed message to alert you to this.
@@ -14,7 +16,7 @@
 
 - Total number of replicas can be changed with the `kubectl scale` command
 
-- The ease of declarative application distrubtion may be slightly complicated by adding persistent storage to an app running across a multicluster as DNS connections between clusters need to be set up manually at this time. This issue is out of the scope of this investigation.
+- The ease of declarative application distrubtion may be slightly complicated by adding persistent storage to an app running across a multicluster as federated persistent volumes are not currently supported and will not automatically communicate across clusters. DNS connections between clusters need to be set up manually in order for data to persistent across clusters in a federation at this time. This issue is out of the scope of this investigation.
 
 Back to [other use-cases](../README.md#multi-cluster-use-cases-1)
 
