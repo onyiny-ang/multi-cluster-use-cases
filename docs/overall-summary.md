@@ -12,7 +12,7 @@
 
 - Annotations (or a similar feature) should be improved--a mistyped bracket or letter in the command will not fail or give any warning that an annotation was unsuccessful. Replicas will not be spread as desired but there will be no error or failed message to alert you to this.
 
-- Both clusters attached to the FCP initially at the time of replica deployment, and those that are attached after the FCP is established with replicas/services can have replicas scheduled to them and away from them. 
+- Both clusters attached to the FCP initially at the time of replica deployment, and those that are attached after the FCP is established with replicas/services can have replicas scheduled to them and away from them.  If an application is already deployed on a cluster that is then added to the FCP, any namespaces within that cluster that are also present in the FCP will be overwritten to reflect the specs in the FCP. Any namespaces within a cluster that are not present in the FCP will remain unchanged.
 
 - Total number of replicas can be changed with the `kubectl scale` command
 
