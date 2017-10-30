@@ -1,5 +1,5 @@
 # Declarative Application Distribution Take Aways
-### The following findings were found through testing across 3 GKE clusters and with 1 GKE cluster and 1 AWS cluster
+#### The following findings were found through testing across 3 GKE clusters and with 1 GKE cluster and 1 AWS cluster
 
 - YAML files--specifically ReplicaSet YAML files are the source of truth that allow for declarative application distribution
 
