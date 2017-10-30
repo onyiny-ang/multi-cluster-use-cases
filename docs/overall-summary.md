@@ -19,6 +19,8 @@
 
 - The ease of declarative application distrubtion may be slightly complicated by adding persistent storage to an app running across a multicluster as federated persistent volumes are not currently supported and will not automatically communicate across clusters. DNS connections between clusters need to be set up manually in order for data to persistent across clusters in a federation at this time. This issue is out of the scope of this investigation.
 
+- Unjoining clusters from the FCP without cleanup leaves them in the state they were last configured in by the FCP.
+
 Back to [other use-cases](../README.md#multi-cluster-use-cases-1)
 
 
