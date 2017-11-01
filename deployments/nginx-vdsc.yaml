@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+  annotations:
+    federation.kubernetes.io/deployment-preferences: |
+      {
+            "rebalance": true,
+            "clusters": {
+                "gce-us-east1": {
+                    "minReplicas": 8,
+                    "maxReplicas": 8,
+                    "weight": 1
+                },
+                "gce-us-central1": {
+                    "minReplicas": 0,
+                    "maxReplicas": 0,
+                    "weight": 1
+                }
+                "gce-us-west1": {
+                    "minReplicas": 1,
+                    "maxReplicas": 1,
+                    "weight": 1
+                }
+            }
+      }
+spec:
+  replicas: 9
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.10
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+
+        ports:
+        - containerPort: 80
